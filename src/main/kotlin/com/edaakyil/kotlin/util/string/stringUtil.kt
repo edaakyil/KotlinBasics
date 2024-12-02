@@ -63,7 +63,7 @@ fun generateRandomTextEN(count: Int, random: Random = Random): String {
     return sb.toString()
 }
 
-fun isIsogram(s: String, alphabet: String, ignoreCase: Boolean = false): Boolean {
+private fun isIsogram(s: String, alphabet: String, ignoreCase: Boolean = false): Boolean {
     for (c in alphabet) {
         val i = s.indexOf(c, 0, ignoreCase)
 
@@ -104,7 +104,7 @@ fun isIsogramEN(s: String) = isIsogram(s.lowercase(), "abcdefghijklmnopqrstuvwxy
 
 fun isIsogramTR(s: String) = isIsogram(s.lowercase(), "abcçdefgğhıijklmnoöprsştuüvyz")
 
-fun isPangram(s: String, alphabet: String, ignoreCase: Boolean = false): Boolean {
+private fun isPangram(s: String, alphabet: String, ignoreCase: Boolean = false): Boolean {
     for (c in alphabet)
         if (!s.contains(c, ignoreCase))
             return false

@@ -4,8 +4,8 @@ import kotlin.math.abs
 import kotlin.math.pow
 import kotlin.math.log10
 
-val ones = arrayOf("", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz")
-val tens = arrayOf("", "on", "yirmi", "otuz", "kırk", "elli", "atmış", "yetmiş", "seksen", "doksan")
+private val ones = arrayOf("", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz")
+private val tens = arrayOf("", "on", "yirmi", "otuz", "kırk", "elli", "atmış", "yetmiş", "seksen", "doksan")
 
 fun countDigits(a: Int) = countDigits(a.toLong())
 
@@ -19,7 +19,7 @@ fun digits(value: Int) = digits(value.toLong())
 
 fun digits(value: Long) = digits(value, 1)
 
-fun digits(value: Long, n: Int): IntArray {
+private fun digits(value: Long, n: Int): IntArray {
     var temp = abs(value)
     val divider = 10.0.pow(n).toInt()
     val count = (log10(temp.toDouble()) / n).toInt() + 1
