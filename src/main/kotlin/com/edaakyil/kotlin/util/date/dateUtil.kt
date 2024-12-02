@@ -17,15 +17,17 @@ Açıklama:
  */
 package com.edaakyil.kotlin.util.date
 
+val daysOfMonths = arrayOf(0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
+val daysOfWeek = arrayOf("Sunday", "Monday", "Thuesday", "Wednesday", "Thursday", "Friday", "Saturday")
+val months = arrayOf("", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
+
 fun isLeapYear(year: Int) = year % 4 == 0 && year % 100 != 0 || year % 400 == 0
 
 fun isValidDate(day: Int, month: Int, year: Int) = day in 1..31 && month in 1..12 && year >= 1990 && day <= getDays(month, year)
 
-fun getDays(month: Int, year: Int) = when (month) {
-    4, 6, 9, 11 -> 30
-    2 -> if (isLeapYear(year)) 29 else 28
-    else -> 31
-}
+fun getDays(month: Int, year: Int) = if (month == 2 && isLeapYear(year)) 29 else daysOfMonths[month]
+
+fun getDayOfWeek(day: Int, month: Int, year: Int) = if (isValidDate(day, month, year)) getTotalDays(day, month, year) % 7 else -1
 
 fun getDayOfYear(day: Int, month: Int, year: Int): Int {
     var dayOfYear = day
@@ -38,9 +40,9 @@ fun getDayOfYear(day: Int, month: Int, year: Int): Int {
 
 fun getTotalDays(day: Int, month: Int, year: Int): Int {
     var totalDays = getDayOfYear(day, month, year)
-    var a = year - 1
 
     /*
+    var a = year - 1
     while (a-- >= 1990)
         totalDays += if (isLeapYear(year)) 366 else 365
     */
@@ -51,53 +53,21 @@ fun getTotalDays(day: Int, month: Int, year: Int): Int {
     return totalDays
 }
 
-fun getDayOfWeek(day: Int, month: Int, year: Int) = if (isValidDate(day, month, year)) getTotalDays(day, month, year) % 7 else -1
-
-fun getDayOfWeekStr(dayOfWeek: Int) = when (dayOfWeek) {
-    0 -> "Sunday"
-    1 -> "Monday"
-    2 -> "Tuesday"
-    3 -> "Wednesday"
-    4 -> "Thursday"
-    5 -> "Friday"
-    6 -> "Saturday"
-    else -> "Wrong input"
+fun getDaySuffix(day: Int) = when (day) {
+    1, 21, 31 -> "st"
+    2, 22 -> "nd"
+    3, 23 -> "rd"
+    else -> "th"
 }
 
 fun printDate(day: Int, month: Int, year: Int) {
     val dayOfWeek = getDayOfWeek(day, month, year)
 
     if (dayOfWeek != -1)
-        println("%02d/%02d/%04d %s".format(day, month, year, getDayOfWeekStr(dayOfWeek)))
+        println("%d%s %s %04d %s".format(day, getDaySuffix(day), months[month], year, daysOfWeek[dayOfWeek]))
     else
         println("Invalid date")
 }
-
-fun runDateApp() {
-    while (true) {
-        print("Day: ")
-        val day = readln().toInt()
-
-        if (day == 0)
-            break
-
-        print("Month: ")
-        val month = readln().toInt()
-
-        print("Year: ")
-        val year = readln().toInt()
-
-        printDate(day, month, year)
-    }
-}
-
-fun main() = runDateApp()
-
-
-
-
-
-
 
 /*
 29/28-> Şubat(2)
