@@ -15,6 +15,11 @@ fun readDouble(prompt: String): Double {
     return readln().toDouble()
 }
 
+fun readString(prompt: String): String {
+    print(prompt)
+    return readln()
+}
+
 fun printArray(arr: IntArray, n: Int = -1, sep: String = " ", end: String = "\n") {
     // val fmt = "%%0%dd%%s".format(n) // n == 2 ise "%02d%s"
     // val fmt = if (n > 0) "%%0%dd%%s".format(n) else "%d%s"

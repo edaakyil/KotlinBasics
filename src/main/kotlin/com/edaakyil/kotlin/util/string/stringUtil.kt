@@ -63,9 +63,42 @@ fun generateRandomTextEN(count: Int, random: Random = Random): String {
     return sb.toString()
 }
 
-fun isIsogram(s: String, alphabet: String): Boolean {
-    TODO("not yet implemented")
+fun isIsogram(s: String, alphabet: String, ignoreCase: Boolean = false): Boolean {
+    for (c in alphabet) {
+        val i = s.indexOf(c, 0, ignoreCase)
+
+        if (i == -1)
+            return false
+
+        if (s.indexOf(c, i + 1, ignoreCase) != -1)
+            return false
+    }
+
+    return true
 }
+
+/*
+fun isIsogram(s: String, alphabet: String, ignoreCase: Boolean = false): Boolean {
+    val flags = BooleanArray(alphabet.length)
+
+    for (c in s)
+        if (c.isLetter())
+            if (alphabet.contains(c, ignoreCase)) {
+                val index = alphabet.indexOf(c, ignoreCase = ignoreCase)
+                if (flags[index])
+                    return false
+
+                flags[index] = true
+            } else
+                return false
+
+    for (flag in flags)
+        if (!flag)
+            return false
+
+    return true
+}
+*/
 
 fun isIsogramEN(s: String) = isIsogram(s.lowercase(), "abcdefghijklmnopqrstuvwxyz")
 
