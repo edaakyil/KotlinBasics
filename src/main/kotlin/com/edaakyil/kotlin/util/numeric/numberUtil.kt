@@ -1,6 +1,7 @@
 package com.edaakyil.kotlin.util.numeric
 
 import kotlin.math.abs
+import kotlin.math.pow
 import kotlin.math.log10
 
 val ones = arrayOf("", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz")
@@ -10,24 +11,31 @@ fun countDigits(a: Int) = countDigits(a.toLong())
 
 fun countDigits(a: Long) = if (a != 0L) log10(abs(a).toDouble()).toInt() + 1 else 1
 
-fun digits(a: Byte) = digits(a.toLong())
+fun digits(value: Byte) = digits(value.toLong())
 
-fun digits(a: Short) = digits(a.toLong())
+fun digits(value: Short) = digits(value.toLong())
 
-fun digits(a: Int) = digits(a.toLong())
+fun digits(value: Int) = digits(value.toLong())
 
-fun digits(a: Long): IntArray {
-    val n = countDigits(a)
-    val arr = IntArray(n)
-    var temp = abs(a)
+fun digits(value: Long) = digits(value, 1)
 
-    for (i in n - 1 downTo 0) {
-        arr[i] = (temp % 10).toInt()
-        temp /= 10
+fun digits(value: Long, n: Int): IntArray {
+    var temp = abs(value)
+    val divider = 10.0.pow(n).toInt()
+    val count = (log10(temp.toDouble()) / n).toInt() + 1
+    val arr = IntArray(count)
+
+    for(i in count - 1 downTo 0) {
+        arr[i] = (temp % divider).toInt()
+        temp /= divider
     }
 
     return arr
 }
+
+fun digitsInTwos(value: Long) = digits(value, 2)
+
+fun digitsInThrees(value: Long) = digits(value, 3)
 
 fun getPrime(n: Int): Long {
     if (n == 1)
