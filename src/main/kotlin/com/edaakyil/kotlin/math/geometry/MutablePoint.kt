@@ -13,7 +13,8 @@ data class MutablePoint(var x: Double = 0.0, var y: Double = 0.0) {
         y += dy
     }
 
-    override fun equals(other: Any?) = other is MutablePoint && (x - other.x).absoluteValue < 0.00001 && (y - other.y).absoluteValue < 0.00001
+    override fun equals(other: Any?) =
+        other is MutablePoint && (x - other.x).absoluteValue < 0.00001 && (y - other.y).absoluteValue < 0.00001
 
     override fun toString() = "($x, $y)"
 }
