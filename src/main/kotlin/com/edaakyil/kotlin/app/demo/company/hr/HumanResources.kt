@@ -7,5 +7,6 @@ class HumanResources {
         println("Citizen Id: ${employee.citizenId}")
         println("Name: ${employee.name}")
         println("Address: ${employee.address}")
+        println("Insurance Payment: ${employee.calculateInsurancePayment()}")
     }
 }

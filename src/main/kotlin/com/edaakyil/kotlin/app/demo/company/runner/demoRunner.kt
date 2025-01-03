@@ -1,12 +1,10 @@
-package com.edaakyil.kotlin.app.demo.company.test
+package com.edaakyil.kotlin.app.demo.company.runner
 
 import com.edaakyil.kotlin.app.demo.company.employee.*
 import com.edaakyil.kotlin.app.demo.company.hr.HumanResources
 import kotlin.random.Random
 
-fun main() = runDemoCompanyApp()
-
-private fun runDemoCompanyApp() {
+fun runDemoCompanyApp() {
     val hr = HumanResources()
 
     while (true) {
