@@ -11,6 +11,8 @@ repositories {
 }
 
 dependencies {
+    implementation("com.edaakyil:com-edaakyil-kotlin-util-console:1.1.0")
+    implementation("com.edaakyil:com-edaakyil-kotlin-math:1.0.0")
     testImplementation(kotlin("test"))
 }
 
