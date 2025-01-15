@@ -24,6 +24,15 @@ public class Demo {
     }
 }
 
+class C extends B {
+    public C(int x, int y)
+    {
+        super(x, y);
+    }
+
+    //public void foo() {}  // error
+}
+
 class B extends A {
     int x;
     int y;
@@ -34,6 +43,8 @@ class B extends A {
         this.x = x;
         this.y = y;
     }
+
+    final public void foo() {}
 }
 
 class A {
@@ -43,4 +54,6 @@ class A {
     {
         this.x = x;
     }
+
+    public void foo() {}
 }

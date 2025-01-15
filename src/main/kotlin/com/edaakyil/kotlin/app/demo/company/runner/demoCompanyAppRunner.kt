@@ -17,7 +17,7 @@ fun runDemoCompanyApp() {
 }
 
 private fun getEmployee(): Employee {
-    return when (Random.nextInt(3))  {
+    return when (Random.nextInt(4))  {
         0 -> getManager()
         1 -> getSalesManager()
         2 -> getWorker()
@@ -25,7 +25,7 @@ private fun getEmployee(): Employee {
     }
 }
 
-private fun getManager() : Manager {
+private fun getManager(): Manager {
     val manager = Manager(300000.0, "Yazılım")
 
     manager.citizenId = "12345678"
@@ -35,7 +35,7 @@ private fun getManager() : Manager {
     return manager
 }
 
-private fun getWorker() : Worker {
+private fun getWorker(): Worker {
     val worker = Worker(1000.0, 8)
 
     worker.citizenId = "12345679"
@@ -45,7 +45,7 @@ private fun getWorker() : Worker {
     return worker
 }
 
-private fun getSalesManager() : SalesManager {
+private fun getSalesManager(): SalesManager {
     val salesManager = SalesManager(40000.0)
 
     salesManager.citizenId = "12345677"
@@ -57,7 +57,7 @@ private fun getSalesManager() : SalesManager {
     return salesManager
 }
 
-private fun getProjectWorker() : ProjectWorker {
+private fun getProjectWorker(): ProjectWorker {
     val projectWorker = ProjectWorker(30000.0)
 
     projectWorker.citizenId = "12345675"

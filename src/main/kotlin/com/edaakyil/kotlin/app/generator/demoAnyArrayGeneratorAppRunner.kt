@@ -4,9 +4,9 @@ import com.edaakyil.kotlin.math.Complex
 import com.edaakyil.kotlin.math.geometry.Point
 import com.edaakyil.kotlin.util.console.readInt
 
-fun main() = runDemoGeneratorApp()
+fun main() = runDemoAnyArrayGeneratorApp()
 
-fun runDemoGeneratorApp() {
+fun runDemoAnyArrayGeneratorApp() {
     val count = readInt("Input count: ")
     val array = createArray(count)
 
@@ -23,4 +23,3 @@ fun runDemoGeneratorApp() {
         }
     }
 }
-
